@@ -1,98 +1,98 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
-  return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
-}
+import { useState } from 'react';
+import {
+  Alert,
+  Button,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 
 export default function HomeScreen() {
+  const [count, setCount] = useState(0);
+
+  function touchMeAction() {
+    Alert.alert('Do something');
+  }
+
   return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
+    <ScrollView contentContainerStyle={styles.scrollContent}>
+      {/* lab 1a~1c: styled text grouped in a View */}
+      <View style={styles.headerBox}>
+        <Text style={styles.headerText}>Hello Ewha</Text>
+        <Text style={styles.subText}>Nice to meet you</Text>
+      </View>
 
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
+      {/* lab 1d / lab 2: local image + remote image */}
+      <Image style={styles.image} source={require('@/assets/images/react-logo.png')} />
+      <Image style={styles.image} source={require('@/assets/images/cat-icon.png')} />
+      <Image
+        style={styles.image}
+        source={{ uri: 'https://reactnative.dev/docs/assets/p_cat2.png' }}
+      />
 
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
+      {/* lab 2a: TextInput */}
+      <TextInput style={styles.input} defaultValue="You can type in me" />
 
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
+      {/* lab 4: Button with onPress action */}
+      <Button title="Press Me" onPress={() => Alert.alert('Tapped')} />
+      <View style={styles.spacer} />
+      <Button title="Touch Me" onPress={touchMeAction} />
+
+      {/* lab 5: Counter App (useState) */}
+      <View style={styles.counterBox}>
+        <Text style={styles.counterText}>{count}</Text>
+        <Button title="Count Up" onPress={() => setCount(count + 1)} />
+        <View style={styles.spacer} />
+        <Button title="Count Down" onPress={() => setCount(count - 1)} />
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
+  scrollContent: {
+    paddingTop: 30,
+    paddingHorizontal: 16,
+    paddingBottom: 40,
   },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
+  headerBox: {
+    backgroundColor: 'cyan',
+    padding: 10,
+    marginBottom: 10,
   },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+  headerText: {
+    fontSize: 30,
+    color: 'blue',
   },
-  title: {
-    textAlign: 'center',
+  subText: {
+    fontSize: 20,
   },
-  code: {
-    textTransform: 'uppercase',
+  image: {
+    width: 150,
+    height: 150,
+    alignSelf: 'center',
+    marginBottom: 10,
   },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 10,
+    paddingHorizontal: 8,
+  },
+  spacer: {
+    height: 10,
+  },
+  counterBox: {
+    marginTop: 20,
+  },
+  counterText: {
+    fontSize: 30,
+    backgroundColor: 'lightgray',
+    padding: 10,
+    marginBottom: 10,
   },
 });
