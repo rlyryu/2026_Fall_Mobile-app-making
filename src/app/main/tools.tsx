@@ -1,11 +1,12 @@
 import { router } from 'expo-router';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
-export default function Onboarding() {
+export default function Tools() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Onboarding Home Screen</Text>
-      <Button title="시작하기" onPress={() => router.navigate('/main')} />
+      <Text style={styles.text}>Apps made in Class</Text>
+      <Button title="hello" onPress={() => router.navigate('/hello')} />
+      <Button title="구구단" onPress={() => router.navigate('/multiplication')} />
     </View>
   );
 }
@@ -13,7 +14,6 @@ export default function Onboarding() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 50,
   },
   text: {
     fontSize: 20,

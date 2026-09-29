@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
-export default function Mult() {
-  const [multiplicand, setMultiplicand] = useState(3);
-  const [multiplier, setMultiplier] = useState(4);
+export default function Multiplication() {
+  const [multiplicand, setMultiplicand] = useState(0);
+  const [multiplier, setMultiplier] = useState(0);
 
   return (
     <View>
-      {/* lab 3: 구구단 */}
       <View style={styles.rowBox}>
         <Text style={styles.boxText}>{multiplicand}</Text>
         <Text style={styles.symbol}>x</Text>
