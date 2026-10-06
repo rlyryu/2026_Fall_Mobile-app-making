@@ -37,6 +37,14 @@ export default function MainLayout() {
           tabBarIcon: ({ color }) => <Ionicons name="construct" size={24} color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="piano"
+        options={{
+          title: 'Piano',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <Ionicons name="musical-notes" size={24} color={color} />,
+        }}
+      />
     </Tabs>
   );
 }
