@@ -5,18 +5,12 @@ import { useState } from 'react';
 import { ImageBackground, View } from 'react-native';
 
 const sound = [ // mp3 리스트 
-  require('../assets/piano/note00.mp3'), 
-  require('../assets/piano/note01.mp3'),
-  require('../assets/piano/note02.mp3'), 
-  require('../assets/piano/note03.mp3'),
-  require('../assets/piano/note04.mp3'), 
-  require('../assets/piano/note05.mp3'),
-  require('../assets/piano/note06.mp3'), 
-  require('../assets/piano/note07.mp3'),
-  require('../assets/piano/note08.mp3'), 
-  require('../assets/piano/note09.mp3'),
-  require('../assets/piano/note10.mp3'), 
-  require('../assets/piano/note11.mp3'),
+  require('../assets/piano/note00.mp3'),   require('../assets/piano/note01.mp3'),
+  require('../assets/piano/note02.mp3'),   require('../assets/piano/note03.mp3'),
+  require('../assets/piano/note04.mp3'),   require('../assets/piano/note05.mp3'),
+  require('../assets/piano/note06.mp3'),   require('../assets/piano/note07.mp3'),
+  require('../assets/piano/note08.mp3'),   require('../assets/piano/note09.mp3'),
+  require('../assets/piano/note10.mp3'),   require('../assets/piano/note11.mp3'),
   require('../assets/piano/note12.mp3'),
 ];
 
