@@ -1,4 +1,4 @@
-// Lab5: Counter App
+// HW#1 Lab5: Counter App
 
 import { useState } from 'react';
 import { Button, Text, View } from 'react-native';

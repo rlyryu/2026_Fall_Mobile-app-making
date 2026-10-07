@@ -1,4 +1,4 @@
-// Lab6: Two counters
+// HW#1 Lab6: Two counters
 
 import { useState } from 'react';
 import { Button, Text, View } from 'react-native';
