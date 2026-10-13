@@ -45,6 +45,13 @@ export default function MainLayout() {
           tabBarIcon: ({ color }) => <Ionicons name="musical-notes" size={24} color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="jsx"
+        options={{
+          title: 'JSX',
+          tabBarIcon: ({ color }) => <Ionicons name="code-slash" size={24} color={color} />,
+        }}
+      />
     </Tabs>
   );
 }
