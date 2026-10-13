@@ -38,7 +38,7 @@ export default function App() {
   return (
     <View style={{ flex: 1 }}>
       <ImageBackground style={{ width: '100%', height: '100%' }}
-        resizeMode="stretch" source={require('../assets/piano/keyboard.png')}>
+        resizeMode="stretch" source={require('../../assets/piano/keyboard.png')}>
         {[0, 2, 4, 5, 7, 9, 11, 12].map(function (n) { return <Key key={n} n={n} />; })}
         {[1, 3, 6, 8, 10].map(function (n) { return <Key key={n} n={n} />; })}
       </ImageBackground>
