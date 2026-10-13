@@ -49,6 +49,40 @@ export default function JsxScreen() {
     );
   }
 
+  // (lab3-extra) 구구단, "for" inside "for"
+  const rows: ReactNode[] = [];
+  for (let r = 2; r <= 6; r += 4) {
+    const cols: ReactNode[] = [];
+
+    for (let d = r; d < r + 4; d++) {
+      const lines: ReactNode[] = [
+        <Text key={0} style={styles.multHeader}>
+          {d}단
+        </Text>,
+      ];
+
+      for (let k = 1; k <= 9; k++) {
+        lines.push(
+          <Text key={k} style={styles.multLine}>
+            {d} x {k} = {d * k}
+          </Text>,
+        );
+      }
+
+      cols.push(
+        <View key={d} style={styles.multCol}>
+          {lines}
+        </View>,
+      );
+    }
+
+    rows.push(
+      <View key={r} style={styles.multRow}>
+        {cols}
+      </View>,
+    );
+  }
+
   return (
     <ScrollView contentContainerStyle={styles.scrollContent}>
       <Text style={styles.sectionTitle}>(lab1) box in box</Text>
@@ -59,6 +93,9 @@ export default function JsxScreen() {
 
       <Text style={styles.sectionTitle}>(lab3) square, 구구단</Text>
       <View>{squares}</View>
+
+      <Text style={styles.sectionTitle}>(lab3-extra) 구구단, &quot;for&quot; inside &quot;for&quot;</Text>
+      <View>{rows}</View>
     </ScrollView>
   );
 }
@@ -92,5 +129,21 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     marginTop: 4,
+  },
+  multRow: {
+    flexDirection: 'row',
+  },
+  multCol: {
+    flex: 1,
+    borderWidth: 1,
+    margin: 2,
+    padding: 5,
+  },
+  multHeader: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  multLine: {
+    fontSize: 14,
   },
 });
