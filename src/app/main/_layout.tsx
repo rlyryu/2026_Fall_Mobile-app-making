@@ -52,6 +52,13 @@ export default function MainLayout() {
           tabBarIcon: ({ color }) => <Ionicons name="code-slash" size={24} color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="dice"
+        options={{
+          title: 'Dice',
+          tabBarIcon: ({ color }) => <Ionicons name="dice" size={24} color={color} />,
+        }}
+      />
     </Tabs>
   );
 }
