@@ -1,4 +1,5 @@
-// Lec 9: Components, Dice App — (step1) Draw Dots, (step2) Dice component, (step3) Roll
+// Lec 9: Components, Dice App — (step1) Draw Dots, (step2) Dice component,
+// (step3) Roll, (extra) Double Dice
 import { useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
@@ -58,14 +59,24 @@ function Dice({ num }: { num: number }) {
 }
 
 export default function DiceScreen() {
-  const [n, setN] = useState(1);
+  const [n1, setN1] = useState(1);
+  const [n2, setN2] = useState(1);
+
+  function roll() {
+    setN1(Math.floor(Math.random() * 6) + 1);
+    setN2(Math.floor(Math.random() * 6) + 1);
+  }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Dice</Text>
-      <Dice num={n} />
+      <Text style={styles.title}>Double Dice</Text>
+      <Text style={styles.sum}>{n1 + n2}</Text>
+      <View style={styles.diceGroup}>
+        <Dice num={n1} />
+        <Dice num={n2} />
+      </View>
       <View style={styles.rollWrap}>
-        <Button title="Roll" onPress={() => setN(Math.floor(Math.random() * 6) + 1)} />
+        <Button title="Roll" onPress={roll} />
       </View>
     </View>
   );
@@ -80,6 +91,14 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     marginBottom: 10,
+  },
+  sum: {
+    fontSize: 20,
+    marginBottom: 10,
+  },
+  diceGroup: {
+    flexDirection: 'row',
+    gap: 10,
   },
   circle: {
     width: 40,
